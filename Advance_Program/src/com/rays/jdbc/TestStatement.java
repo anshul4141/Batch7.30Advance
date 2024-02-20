@@ -11,26 +11,46 @@ public class TestStatement {
 
 //		add();
 //		search();
-//		Update();
+//		update();
 		delete();
 
 	}
 
-	private static void add() throws Exception {
+	private static void delete() throws Exception {
 
 		Class.forName("com.mysql.cj.jdbc.Driver");
 
 		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/advance", "root", "root");
 
-		System.out.println("connection successfully.....");
-
 		Statement st = conn.createStatement();
 
-		String sql = "insert into marksheet values(2,'Demo',102,72,65,54)";
+		String sql = "delete from marksheet where rollNo = 101";
 
 		int i = st.executeUpdate(sql);
 
-		System.out.println("Data Inserted " + i);
+		conn.close();
+		st.close();
+
+		System.out.println("data delete successfulyy.." + i);
+
+	}
+
+	private static void update() throws Exception {
+
+		Class.forName("com.mysql.cj.jdbc.Driver");
+
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/advance", "root", "root");
+
+		Statement st = conn.createStatement();
+
+		String sql = "update marksheet set name = 'Susmita', maths = 82 where rollNo = 102";
+
+		int i = st.executeUpdate(sql);
+
+		conn.close();
+		st.close();
+
+		System.out.println("data update successfulyy.." + i);
 
 	}
 
@@ -40,8 +60,6 @@ public class TestStatement {
 
 		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/advance", "root", "root");
 
-		System.out.println("connection successfully.....");
-
 		Statement st = conn.createStatement();
 
 		String sql = "select * from marksheet";
@@ -50,7 +68,6 @@ public class TestStatement {
 
 		while (rs.next()) {
 
-			System.out.println("id     " + "name  " + "rollNo    ");
 			System.out.print(rs.getInt(1));
 			System.out.print("\t" + rs.getString(2));
 			System.out.print("\t" + rs.getInt(3));
@@ -60,41 +77,27 @@ public class TestStatement {
 
 		}
 
+		conn.close();
+		st.close();
+
 	}
 
-	private static void Update() throws Exception {
+	private static void add() throws Exception {
 
 		Class.forName("com.mysql.cj.jdbc.Driver");
 
 		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/advance", "root", "root");
 
-		System.out.println("connection successfully.....");
-
 		Statement st = conn.createStatement();
 
-		String sql = "update marksheet set name = 'Pawan' where id = 1";
+		String sql = "insert into marksheet values(2, 'Kirti', 102, 68, 75, 84)";
 
 		int i = st.executeUpdate(sql);
 
-		System.out.println("Data Updated Successfulyy..." + i);
+		conn.close();
+		st.close();
 
-	}
-
-	public static void delete() throws Exception {
-
-		Class.forName("com.mysql.cj.jdbc.Driver");
-
-		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/advance", "root", "root");
-
-		System.out.println("connection successfully.....");
-
-		Statement st = conn.createStatement();
-
-		String sql = "delete from marksheet where rollNo = 102";
-
-		int i = st.executeUpdate(sql);
-
-		System.out.println("Data Deleted Successfulyy..." + i);
+		System.out.println("data inserted successfullyy.." + i);
 
 	}
 
