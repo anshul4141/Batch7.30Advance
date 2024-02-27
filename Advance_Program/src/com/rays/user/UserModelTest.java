@@ -145,7 +145,7 @@ public class UserModelTest {
 
 			bean = (UserBean) it.next();
 			System.out.print(bean.getId());
-			System.out.print("\t" + bean.getFirstName());
+			System.out.print("   " + bean.getFirstName());
 			System.out.print("\t" + bean.getLastName());
 			System.out.print("\t" + bean.getLoginId());
 			System.out.print("\t" + bean.getPassword());
