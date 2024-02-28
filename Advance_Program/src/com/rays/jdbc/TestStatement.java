@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ResourceBundle;
 
 public class TestStatement {
 
@@ -18,9 +19,12 @@ public class TestStatement {
 
 	private static void delete() throws Exception {
 
-		Class.forName("com.mysql.cj.jdbc.Driver");
+		ResourceBundle rc = ResourceBundle.getBundle("com.rays.bundle.system");
 
-		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/advance", "root", "root");
+		Class.forName(rc.getString("driver"));
+
+		Connection conn = DriverManager.getConnection(rc.getString("url"), rc.getString("username"),
+				rc.getString("password"));
 
 		Statement st = conn.createStatement();
 
@@ -37,9 +41,12 @@ public class TestStatement {
 
 	private static void update() throws Exception {
 
-		Class.forName("com.mysql.cj.jdbc.Driver");
+		ResourceBundle rc = ResourceBundle.getBundle("com.rays.bundle.system");
 
-		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/advance", "root", "root");
+		Class.forName(rc.getString("driver"));
+
+		Connection conn = DriverManager.getConnection(rc.getString("url"), rc.getString("username"),
+				rc.getString("password"));
 
 		Statement st = conn.createStatement();
 
@@ -56,9 +63,12 @@ public class TestStatement {
 
 	private static void search() throws Exception {
 
-		Class.forName("com.mysql.cj.jdbc.Driver");
+		ResourceBundle rc = ResourceBundle.getBundle("com.rays.bundle.system");
 
-		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/advance", "root", "root");
+		Class.forName(rc.getString("driver"));
+
+		Connection conn = DriverManager.getConnection(rc.getString("url"), rc.getString("username"),
+				rc.getString("password"));
 
 		Statement st = conn.createStatement();
 
@@ -84,9 +94,12 @@ public class TestStatement {
 
 	private static void add() throws Exception {
 
-		Class.forName("com.mysql.cj.jdbc.Driver");
+		ResourceBundle rc = ResourceBundle.getBundle("com.rays.bundle.system");
 
-		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/advance", "root", "root");
+		Class.forName(rc.getString("driver"));
+
+		Connection conn = DriverManager.getConnection(rc.getString("url"), rc.getString("username"),
+				rc.getString("password"));
 
 		Statement st = conn.createStatement();
 
