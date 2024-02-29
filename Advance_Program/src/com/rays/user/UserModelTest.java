@@ -122,13 +122,13 @@ public class UserModelTest {
 	}
 
 	private static void testSearch() throws Exception {
-		
+
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
 		UserBean bean = new UserBean();
 		UserModel model = new UserModel();
 
-		bean.setFirstName("s");
+//		bean.setFirstName("s");
 //		bean.setDob(sdf.parse("25/01/2001"));
 
 		List list = model.search(bean);
