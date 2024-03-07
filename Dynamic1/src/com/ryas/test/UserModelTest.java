@@ -37,7 +37,7 @@ public class UserModelTest {
 		UserBean existBean = model.findByLogin(bean.getLoginId());
 
 		if (existBean != null) {
-			System.out.println("LoginId Allready Exist..");
+			System.out.println("LoginId Already Exists..");
 		} else {
 			model.add(bean);
 		}

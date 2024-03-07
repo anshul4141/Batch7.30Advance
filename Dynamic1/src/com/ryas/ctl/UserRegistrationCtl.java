@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,6 +20,8 @@ public class UserRegistrationCtl extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+		resp.sendRedirect("UserRegistration.jsp");
+
 	}
 
 	@Override
@@ -26,6 +29,7 @@ public class UserRegistrationCtl extends HttpServlet {
 
 		UserBean bean = new UserBean();
 		UserModel model = new UserModel();
+		RequestDispatcher rd = req.getRequestDispatcher("UserRegistration.jsp");
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		System.out.println("in userRegistration doPost");
@@ -61,8 +65,11 @@ public class UserRegistrationCtl extends HttpServlet {
 
 		try {
 			model.add(bean);
+			req.setAttribute("succ", "Data added successfully...");
+			rd.forward(req, resp);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			req.setAttribute("error", "Data not added successfully...");
+			rd.forward(req, resp);
 			e.printStackTrace();
 		}
 

@@ -7,9 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%@ include file="Header.jsp"%>
-	<center>
-		<h1>Welcome To Web Application</h1>
-	</center>
+	<br>
+	<a href="UserRegistrationCtl">signUp</a> |
+	<a href="#">login</a>
+	<br>
+	<br>
+	<hr>
 </body>
 </html>
