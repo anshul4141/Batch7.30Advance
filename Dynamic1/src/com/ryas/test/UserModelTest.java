@@ -10,12 +10,12 @@ import com.rays.model.UserModel;
 public class UserModelTest {
 	public static void main(String[] args) throws Exception {
 
-		testAdd();
+//		testAdd();
 //		testUpdate();
 //		testDelete();
 //		testFindByPk();
 //		testAuth();
-//		testSearch();
+		testSearch();
 
 	}
 

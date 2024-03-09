@@ -9,7 +9,8 @@
 <body>
 	<br>
 	<a href="UserRegistrationCtl">signUp</a> |
-	<a href="#">login</a>
+	<a href="#">login</a> |
+	<a href="UserListCtl">UserList</a>
 	<br>
 	<br>
 	<hr>

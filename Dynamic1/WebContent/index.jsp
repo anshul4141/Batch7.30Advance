@@ -11,5 +11,6 @@
 	<center>
 		<h1>Welcome To Web Application</h1>
 	</center>
+	<%@ include file="Footer.jsp"%>
 </body>
 </html>

@@ -1,3 +1,6 @@
+<%@page import="com.rays.bean.UserBean"%>
+<%@page import="java.util.Iterator"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -8,29 +11,41 @@
 </head>
 <body>
 	<%@ include file="Header.jsp"%>
-	<form action="">
+	<%
+		List list = (List) request.getAttribute("userList");
+	%>
+	<h1 align="center">UserList</h1>
+	<form action="UserListCtl" method="post">
 		<table border="2" width="100%" align="center">
 			<tr>
 				<th>Id</th>
 				<th>FirstName</th>
 				<th>LastName</th>
 				<th>Email</th>
-				<th>Password</th>
 				<th>PhoneNo</th>
 				<th>dob</th>
 				<th>Gender</th>
 			</tr>
+			<%
+				Iterator<UserBean> it = list.iterator();
+				while (it.hasNext()) {
+
+					UserBean bean = it.next();
+			%>
 			<tr align="center">
-				<td>1</td>
-				<td>Anshul</td>
-				<td>Prajapati</td>
-				<td>anshul@gmail.com</td>
-				<td>Anshul@123</td>
-				<td>9869586878</td>
-				<td>2001-01-25</td>
-				<td>Male</td>
+				<td><%=bean.getId()%></td>
+				<td><%=bean.getFirstName()%></td>
+				<td><%=bean.getLastName()%></td>
+				<td><%=bean.getLoginId()%></td>
+				<td><%=bean.getPhoneNo()%></td>
+				<td><%=bean.getDob()%></td>
+				<td><%=bean.getGender()%></td>
 			</tr>
+			<%
+				}
+			%>
 		</table>
 	</form>
+	<%@ include file="Footer.jsp"%>
 </body>
 </html>

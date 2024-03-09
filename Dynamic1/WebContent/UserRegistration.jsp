@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%@ include file="Header.jsp"%>
+	<%@ include file="Header.jsp"%>
 	<%
 		String succ = (String) request.getAttribute("succ");
 		String error = (String) request.getAttribute("error");
@@ -19,6 +19,8 @@
 	<%
 		}
 	%>
+	<br>
+	<br>
 	<center>
 		<%
 			if (succ != null) {
@@ -71,5 +73,6 @@
 			</table>
 		</form>
 	</center>
+	<%@ include file="Footer.jsp"%>
 </body>
 </html>

@@ -10,7 +10,7 @@ import com.rays.bean.UserBean;
 import com.ryas.util.JDBCDataSource;
 
 public class UserModel {
-	
+
 	public Integer nextPk() throws Exception {
 
 		int pk = 0;
