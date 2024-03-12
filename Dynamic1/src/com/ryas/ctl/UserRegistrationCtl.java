@@ -35,8 +35,6 @@ public class UserRegistrationCtl extends HttpServlet {
 			e.printStackTrace();
 		}
 
-		resp.sendRedirect("UserRegistration.jsp");
-
 	}
 
 	@Override
@@ -44,11 +42,14 @@ public class UserRegistrationCtl extends HttpServlet {
 
 		UserBean bean = new UserBean();
 		UserModel model = new UserModel();
-		RequestDispatcher rd = req.getRequestDispatcher("UserRegistration.jsp");
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		System.out.println("in userRegistration doPost");
 
+		String op = req.getParameter("operation");
+		System.out.println("edit id>>> " + req.getParameter("id"));
+		String id = req.getParameter("id");
+		System.out.println("String id >= " + id);
 		String fname = req.getParameter("firstName");
 		String lname = req.getParameter("lastName");
 		String loginId = req.getParameter("loginId");
@@ -56,7 +57,6 @@ public class UserRegistrationCtl extends HttpServlet {
 		String phoneNo = req.getParameter("phoneNo");
 		String dob = req.getParameter("dob");
 		String gender = req.getParameter("gender");
-		int id = Integer.parseInt(req.getParameter("id"));
 
 		System.out.println(fname);
 		System.out.println(lname);
@@ -79,25 +79,31 @@ public class UserRegistrationCtl extends HttpServlet {
 		}
 		bean.setGender(gender);
 
-		try {
-			if (id != 0 && id > 0) {
-
-				model.update(bean);
-				req.setAttribute("succ", "Data Updated successfully...");
-				rd.forward(req, resp);
-
-			} else {
-
+		if (op.equals("save")) {
+			try {
 				model.add(bean);
-				req.setAttribute("succ", "Data added successfully...");
-				rd.forward(req, resp);
+				req.setAttribute("succ", "User added Successfully..!!");
+			} catch (Exception e) {
+				req.setAttribute("error", "User updated Successfully..!!");
+				e.printStackTrace();
+			}
+		}
+
+		if (op.equals("update")) {
+			bean.setId(Integer.parseInt(id));
+			try {
+				model.update(bean);
+				bean = model.findByPk(bean.getId());
+				req.setAttribute("succ", "User updated Successfully..!!");
+				req.setAttribute("bean", bean);
+			} catch (Exception e) {
+				req.setAttribute("error", "User updated Successfully..!!");
+				e.printStackTrace();
 			}
 
-		} catch (Exception e) {
-			req.setAttribute("error", "Data not added successfully...");
-			rd.forward(req, resp);
-			e.printStackTrace();
 		}
+		RequestDispatcher rd = req.getRequestDispatcher("UserRegistration.jsp");
+		rd.forward(req, resp);
 
 	}
 

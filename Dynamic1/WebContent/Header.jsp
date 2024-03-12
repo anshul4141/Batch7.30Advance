@@ -8,7 +8,7 @@
 </head>
 <body>
 	<br>
-	<a href="UserRegistrationCtl">signUp</a> |
+	<a href="UserRegistration.jsp">signUp</a> |
 	<a href="#">login</a> |
 	<a href="UserListCtl">UserList</a>
 	<br>

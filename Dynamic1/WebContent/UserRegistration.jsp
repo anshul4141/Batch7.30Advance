@@ -14,13 +14,6 @@
 		String error = (String) request.getAttribute("error");
 		UserBean bean = (UserBean) request.getAttribute("bean");
 	%>
-	<%
-		if (succ != null) {
-	%>
-	<%=succ%>
-	<%
-		}
-	%>
 	<br>
 	<br>
 	<center>
@@ -38,11 +31,12 @@
 		<%
 			}
 		%>
-		<tr>
-			<td><input type="hidden" name="id"
-				value="<%=(bean != null) ? bean.getId() : ""%>"></td>
-		</tr>
+
 		<form action="UserRegistrationCtl" method="post">
+			<tr>
+				<td><input type="hidden" name="id"
+					value="<%=(bean != null) ? bean.getId() : ""%>"></td>
+			</tr>
 			<table>
 				<tr>
 					<th>First Name:</th>
@@ -81,7 +75,8 @@
 				</tr>
 				<tr>
 					<th></th>
-					<td><input type="submit"></td>
+					<td><input type="submit" name="operation"
+						value="<%=(bean != null) ? "update" : "save"%>"></td>
 				</tr>
 			</table>
 		</form>
