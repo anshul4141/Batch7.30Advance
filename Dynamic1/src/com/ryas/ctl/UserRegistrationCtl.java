@@ -20,6 +20,21 @@ public class UserRegistrationCtl extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+		String id = req.getParameter("id");
+
+		System.out.println("edit id >=" + id);
+
+		UserModel model = new UserModel();
+
+		try {
+			UserBean bean = model.findByPk(Integer.parseInt(id));
+			req.setAttribute("bean", bean);
+			RequestDispatcher rd = req.getRequestDispatcher("UserRegistration.jsp");
+			rd.forward(req, resp);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		resp.sendRedirect("UserRegistration.jsp");
 
 	}
@@ -41,6 +56,7 @@ public class UserRegistrationCtl extends HttpServlet {
 		String phoneNo = req.getParameter("phoneNo");
 		String dob = req.getParameter("dob");
 		String gender = req.getParameter("gender");
+		int id = Integer.parseInt(req.getParameter("id"));
 
 		System.out.println(fname);
 		System.out.println(lname);
@@ -64,9 +80,19 @@ public class UserRegistrationCtl extends HttpServlet {
 		bean.setGender(gender);
 
 		try {
-			model.add(bean);
-			req.setAttribute("succ", "Data added successfully...");
-			rd.forward(req, resp);
+			if (id != 0 && id > 0) {
+
+				model.update(bean);
+				req.setAttribute("succ", "Data Updated successfully...");
+				rd.forward(req, resp);
+
+			} else {
+
+				model.add(bean);
+				req.setAttribute("succ", "Data added successfully...");
+				rd.forward(req, resp);
+			}
+
 		} catch (Exception e) {
 			req.setAttribute("error", "Data not added successfully...");
 			rd.forward(req, resp);

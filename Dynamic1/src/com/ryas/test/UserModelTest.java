@@ -133,7 +133,7 @@ public class UserModelTest {
 //		bean.setFirstName("s");
 //		bean.setDob(sdf.parse("25/01/2001"));
 
-		List list = model.search(bean);
+		List list = model.search(bean, 0, 5);
 
 		Iterator it = list.iterator();
 
