@@ -60,6 +60,13 @@ public class UserListCtl extends HttpServlet {
 
 		System.out.println("op>>" + op);
 
+		if (op.equals("search")) {
+
+			String fname = request.getParameter("firstName");
+			bean.setFirstName(fname);
+
+		}
+
 		if (op.equals("delete")) {
 
 			String[] ids = request.getParameterValues("ids");

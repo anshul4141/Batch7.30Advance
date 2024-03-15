@@ -14,8 +14,8 @@ public class UserModelTest {
 //		testUpdate();
 //		testDelete();
 //		testFindByPk();
-//		testAuth();
-		testSearch();
+		testAuth();
+//		testSearch();
 
 	}
 
@@ -104,7 +104,7 @@ public class UserModelTest {
 
 		UserModel model = new UserModel();
 
-		UserBean bean = model.authenticate("anshulprajapati@gmail.com", "Pass1234");
+		UserBean bean = model.authenticate("anshulprajapati@gmail.com", "asdfg");
 
 		if (bean != null) {
 

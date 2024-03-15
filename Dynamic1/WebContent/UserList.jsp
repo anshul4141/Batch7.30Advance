@@ -26,6 +26,18 @@
 		}
 	%>
 	<form action="UserListCtl" method="post">
+		<table style="width: 30%">
+			<tr>
+				<td><input type="text" name="firstName"
+					placeholder="Enter First Name"></td>
+				<td></td>
+				<td><input type="submit" name="operation" value="search">
+				</td>
+			</tr>
+			<tr></tr>
+			<tr></tr>
+			<tr></tr>
+		</table>
 		<table border="2" width="100%" align="center">
 			<tr>
 				<th>Select</th>

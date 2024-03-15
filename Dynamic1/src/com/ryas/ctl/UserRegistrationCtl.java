@@ -84,7 +84,7 @@ public class UserRegistrationCtl extends HttpServlet {
 				model.add(bean);
 				req.setAttribute("succ", "User added Successfully..!!");
 			} catch (Exception e) {
-				req.setAttribute("error", "User updated Successfully..!!");
+				req.setAttribute("error", "User not added Successfully..!!");
 				e.printStackTrace();
 			}
 		}
