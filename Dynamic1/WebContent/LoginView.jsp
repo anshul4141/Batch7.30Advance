@@ -8,23 +8,38 @@
 </head>
 <body>
 	<%@ include file="Header.jsp"%>
+	<center>
 
-	<form action="LoginCtl" method="post">
-		<table>
-			<tr>
-				<th>Login</th>
-				<td><input type="email" name="loginId"></td>
-			</tr>
-			<tr>
-				<th>password</th>
-				<td><input type="password" name="password"></td>
-			</tr>
-			<tr>
-				<th></th>
-				<td><input type="submit"></td>
-			</tr>
-		</table>
-	</form>
+		<%
+			String succ = (String) request.getAttribute("succ");
+		%>
+		<form action="LoginCtl" method="post">
+			<%
+				if (succ != null) {
+			%>
+			<%=succ%>
+			<%
+				}
+			%>
+
+			<table>
+				<tr>
+					<th>Login</th>
+					<td><input type="email" name="loginId"></td>
+				</tr>
+				<tr>
+					<th>password</th>
+					<td><input type="password" name="password"></td>
+				</tr>
+				<tr>
+					<th></th>
+					<td><input type="submit"></td>
+				</tr>
+			</table>
+
+		</form>
+
+	</center>
 	<%@ include file="Footer.jsp"%>
 </body>
 </html>

@@ -58,6 +58,14 @@ public class UserRegistrationCtl extends HttpServlet {
 		String dob = req.getParameter("dob");
 		String gender = req.getParameter("gender");
 
+		if (fname.equals("")) {
+
+			System.out.println("fname is null");
+
+			req.setAttribute("fname", "First Name is required");
+
+		}
+
 		System.out.println(fname);
 		System.out.println(lname);
 		System.out.println(loginId);

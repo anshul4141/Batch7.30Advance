@@ -13,7 +13,7 @@
 		String msg = "hii, ";
 		if (user != null) {
 
-			msg += user.getFirstName();
+			msg += user.getFirstName() + " " + user.getLastName();
 
 		} else {
 
@@ -23,11 +23,15 @@
 	%>
 	<br>
 	<a href="UserRegistration.jsp">signUp</a> |
-	<a href="LoginCtl">login</a> |
 	<%
 		if (user != null) {
 	%>
-	<a href="UserListCtl">UserList</a>
+	<a href="UserListCtl">UserList</a> |
+	<a href="LoginCtl?operation=logout">logout</a>
+	<%
+		} else {
+	%>
+	<a href="LoginCtl">login</a>
 	<%
 		}
 	%>

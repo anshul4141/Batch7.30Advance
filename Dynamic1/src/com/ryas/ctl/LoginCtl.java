@@ -19,7 +19,21 @@ public class LoginCtl extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		resp.sendRedirect("LoginView.jsp");
+		String op = req.getParameter("operation");
+		HttpSession session = req.getSession();
+
+		if (op != null && op.equals("logout")) {
+
+			session.invalidate();
+			req.setAttribute("succ", "User Logout Successfully");
+			RequestDispatcher rd = req.getRequestDispatcher("LoginView.jsp");
+			rd.forward(req, resp);
+
+		} else {
+
+			resp.sendRedirect("LoginView.jsp");
+
+		}
 
 	}
 

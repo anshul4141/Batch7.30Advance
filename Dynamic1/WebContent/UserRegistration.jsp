@@ -10,6 +10,7 @@
 <body>
 	<%@ include file="Header.jsp"%>
 	<%
+		String fname = (String) request.getAttribute("fname");
 		String succ = (String) request.getAttribute("succ");
 		String error = (String) request.getAttribute("error");
 		UserBean bean = (UserBean) request.getAttribute("bean");
@@ -42,6 +43,13 @@
 					<th>First Name:</th>
 					<td><input type="text" name="firstName"
 						value="<%=(bean != null) ? bean.getFirstName() : ""%>"></td>
+					<td>
+						<%
+							if (fname != null) {
+						%> <font color="red"><%=fname%></font> <%
+ 	}
+ %>
+					</td>
 				</tr>
 				<tr>
 					<th>last Name:</th>
